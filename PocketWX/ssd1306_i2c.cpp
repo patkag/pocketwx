@@ -183,6 +183,12 @@ static inline int GetFontIndex(uint8_t ch) {
     else if (ch >= '0' && ch <='9') {
         return  ch - '0' + 27;
     }
+    else if (ch == '.') {
+        return  37;
+    }
+    else if (ch == '-') {
+        return  38;
+    }
     else return  0; // Not got that char so space.
 }
 
@@ -202,7 +208,7 @@ void WriteChar(uint8_t *buf, int16_t x, int16_t y, uint8_t ch) {
     }
 }
 
-void WriteString(uint8_t *buf, int16_t x, int16_t y, char *str) {
+void WriteString(uint8_t *buf, int16_t x, int16_t y, const char *str) {
     // Cull out any string off the screen
     if (x > SSD1306_WIDTH - 8 || y > SSD1306_HEIGHT - 8)
         return;

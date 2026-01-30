@@ -35,14 +35,14 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(PocketWX main.cpp ssd1306_i2c.cpp)
+add_executable(PocketWX main.cpp ssd1306_i2c.cpp display.cpp wx_sensor_module.cpp hardware_utils.cpp bmep280.cpp logger.cpp menu/menu.cpp menu/menu_items.cpp)
 
 pico_set_program_name(PocketWX "PocketWX")
-pico_set_program_version(PocketWX "0.1")
+pico_set_program_version(PocketWX "0.2")
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(PocketWX 0)
-pico_enable_stdio_usb(PocketWX 0)
+pico_enable_stdio_usb(PocketWX 1)
 
 # Add the standard library to the build
 target_link_libraries(PocketWX

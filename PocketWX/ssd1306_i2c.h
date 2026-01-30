@@ -4,6 +4,9 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#ifndef SSD1306_I2C_H
+#define SSD1306_I2C_H
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -115,4 +118,5 @@ void render(uint8_t *buf, struct render_area *area);
 void DrawLine(uint8_t *buf, int x0, int y0, int x1, int y1, bool on);
 void WriteChar(uint8_t *buf, int16_t x, int16_t y, uint8_t ch);
 
-void WriteString(uint8_t *buf, int16_t x, int16_t y, char *str);
+void WriteString(uint8_t *buf, int16_t x, int16_t y, const char *str);
+#endif
