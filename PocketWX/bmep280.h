@@ -1,28 +1,15 @@
+/*------------------------------------------------------/
+/ Copyright (c) 2026, patkag
+/ Released under the GNU General Public License version 3
+/ refer to https://opensource.org/license/gpl-3-0
+/------------------------------------------------------*/
+
 #ifndef _BMEP280_H_
 #define _BMEP280_H_
 
 #include "hardware/i2c.h"
 #include "pico/binary_info.h"
 #include "pico/stdlib.h"
-
-
- /* Example code to talk to a BMP280 temperature and pressure sensor
-
-    NOTE: Ensure the device is capable of being driven at 3.3v NOT 5v. The Pico
-    GPIO (and therefore I2C) cannot be used at 5v.
-
-    You will need to use a level shifter on the I2C lines if you want to run the
-    board at 5v.
-
-    Connections on Raspberry Pi Pico board, other boards may vary.
-
-    GPIO PICO_DEFAULT_I2C_SDA_PIN (on Pico this is GP4 (pin 6)) -> SDA on BMP280
-    board
-    GPIO PICO_DEFAULT_I2C_SCK_PIN (on Pico this is GP5 (pin 7)) -> SCL on
-    BMP280 board
-    3.3v (pin 36) -> VCC on BMP280 board
-    GND (pin 38)  -> GND on BMP280 board
- */
 
  // device has default bus address of 0x76
 #define ADDR _u(0x76)

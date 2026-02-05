@@ -1,3 +1,9 @@
+/*------------------------------------------------------/
+/ Copyright (c) 2026, patkag
+/ Released under the GNU General Public License version 3
+/ refer to https://opensource.org/license/gpl-3-0
+/------------------------------------------------------*/
+
 #include "logger.h"
 #include <format>
 
@@ -7,9 +13,6 @@ const std::string Logger::m_labels[3] = {"ERROR", "WARNING", "INFO"};
 Logger::Logger()
 {
     m_log_level=Logger::LL_INFO;
-    /*m_labels[Logger::LL_INFO]="INFO";
-    m_labels[Logger::LL_WARNING]="WARNING";
-    m_labels[Logger::LL_ERROR]="ERROR";*/
 }
 
 void Logger::setLogLevel(Logger::LogLevel level)

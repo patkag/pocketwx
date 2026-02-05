@@ -1,5 +1,10 @@
-#include "display.h"
+/*------------------------------------------------------/
+/ Copyright (c) 2026, patkag
+/ Released under the GNU General Public License version 3
+/ refer to https://opensource.org/license/gpl-3-0
+/------------------------------------------------------*/
 
+#include "display.h"
 
 void init_display()
 {
@@ -7,21 +12,6 @@ void init_display()
         //display init
     SSD1306_init();
     
-    // Initialize render area for entire frame (SSD1306_WIDTH pixels by SSD1306_NUM_PAGES pages)
-    //struct render_area frame_area = {
-    //    start_col: 0,
-    //    end_col : SSD1306_WIDTH - 1,
-    //    start_page : 0,
-    //    end_page : SSD1306_NUM_PAGES - 1
-    //    };
-
-    //calc_render_area_buflen(&frame_area);
-
-    // zero the entire display
-    //probably it's not needed
-    //uint8_t buf[SSD1306_BUF_LEN];
-    //memset(buf, 0, SSD1306_BUF_LEN);
-    //render(buf, &frame_area);
 }
 
 Display::Display()

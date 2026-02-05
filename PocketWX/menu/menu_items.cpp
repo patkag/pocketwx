@@ -1,3 +1,9 @@
+/*------------------------------------------------------/
+/ Copyright (c) 2026, patkag
+/ Released under the GNU General Public License version 3
+/ refer to https://opensource.org/license/gpl-3-0
+/------------------------------------------------------*/
+
 #include "menu_items.h"
 
 void MenuItemDisplayLogo::execute(Display &display, WxSensorModule& wx_sensor)

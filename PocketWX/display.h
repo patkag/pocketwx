@@ -1,3 +1,9 @@
+/*------------------------------------------------------/
+/ Copyright (c) 2026, patkag
+/ Released under the GNU General Public License version 3
+/ refer to https://opensource.org/license/gpl-3-0
+/------------------------------------------------------*/
+
 #pragma once
 
 #include <string>
@@ -33,6 +39,5 @@ private:
     uint8_t m_screen_buf[SSD1306_BUF_LEN];
 
     bool m_is_display_inverted;
-
 
 };
