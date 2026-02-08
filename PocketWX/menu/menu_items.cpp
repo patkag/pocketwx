@@ -34,9 +34,9 @@ void MenuItemAltitude::execute(Display &display, WxSensorModule& wx_sensor)
 
 void MenuItemAllMeasurements::execute(Display &display, WxSensorModule& wx_sensor)
 {
-wx_sensor.updateData();
-    display.putTextAt(10, 0, "all measurements");
-    display.putTextAt(5,  8, "  T " + std::to_string(wx_sensor.getTemp()));
+    wx_sensor.updateData();
+    display.putTextAt(5, 0, "all measurement");
+    display.putTextAt(5,  8, "  T  "+ std::to_string(wx_sensor.getTemp()));
     display.putTextAt(5, 16, "  P " + std::to_string(wx_sensor.getPress()));
     display.putTextAt(5, 24, "alt " + std::to_string(wx_sensor.getAlt()));
     Logger::sendLogMsg(Logger::LL_INFO, "all measurements menu item");
