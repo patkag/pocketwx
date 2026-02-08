@@ -5,6 +5,7 @@
 /------------------------------------------------------*/
 
 #include "wx_sensor_module.h"
+#include <math.h>
 
 int WxSensorModule::initWxSensorModule()
 {
@@ -28,6 +29,12 @@ WxSensorModule::WxSensorModule()
     m_pressure = -1;
     m_humidity = -1;
     m_alt = -1;
+    //let's give the sensor a bit of time to get up to speed
+    sleep_ms(100);
+    updateData();
+    m_initial_pressure = m_pressure;
+    m_initial_altitude = 515;
+    Logger::sendLogMsg(Logger::LL_INFO, "initial pressure value: " + std::to_string(m_initial_pressure));
 }
 
 float WxSensorModule::getTemp()
@@ -47,7 +54,10 @@ float WxSensorModule::getHumidity()
 
 float WxSensorModule::getAlt()
 {
-    return m_alt;
+    float ratio = m_pressure / m_initial_pressure;
+    float deltaH = (kTemp0 / kLapseRate) * (1.0f - pow(ratio, kExponent));
+    
+    return m_initial_altitude + deltaH;
 }
 
 int WxSensorModule::updateData()
@@ -60,7 +70,7 @@ int WxSensorModule::updateData()
     int32_t pressure = bmp280_convert_pressure(raw_pressure, raw_temperature, &m_calib_params);
     
     m_temp = temperature / 100.f;
-    m_pressure = pressure / 1000.f;
+    m_pressure = pressure / 100.f; //to get the pressure in hPa
     
     return 0;
 }

@@ -41,7 +41,7 @@ pico_set_program_name(PocketWX "PocketWX")
 pico_set_program_version(PocketWX "0.2")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(PocketWX 0)
+pico_enable_stdio_uart(PocketWX 1)
 pico_enable_stdio_usb(PocketWX 1)
 
 # Add the standard library to the build

@@ -8,7 +8,7 @@
 #include <format>
 
 Logger* Logger::m_instance_ptr = nullptr;
-const std::string Logger::m_labels[3] = {"ERROR", "WARNING", "INFO"};
+const std::string Logger::m_labels[4] = {"ERROR", "WARNING", "INFO", "DEBUG"};
 
 Logger::Logger()
 {

@@ -14,11 +14,13 @@ void Menu::addMenuItem(unique_ptr<MenuItem> item)
 void Menu::run()
 {
 
+    //display welcome image
     m_display.imgToBuf(pocket_wx_welcome_img);
-
     m_display.renderDisplay();
-
-    sleep_ms(2000);
+    sleep_ms(1000);
+    m_display.imgToBuf(pocket_wx_welcome_img_2);
+    m_display.renderDisplay();
+    sleep_ms(1000);
 
     while (true)
     {

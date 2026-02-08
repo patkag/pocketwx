@@ -16,7 +16,8 @@ class Logger
     {
         LL_ERROR   = 0,
         LL_WARNING = 1,
-        LL_INFO    = 2
+        LL_INFO    = 2,
+        LL_DEBUG   = 3
     };
     static void sendLogMsg(LogLevel logLvl, const std::string msg);
 
@@ -31,6 +32,6 @@ class Logger
     
     static Logger *m_instance_ptr;
     LogLevel m_log_level;
-    static const std::string m_labels[3];
+    static const std::string m_labels[4];
 
 };
