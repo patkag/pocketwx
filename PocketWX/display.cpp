@@ -52,37 +52,6 @@ void Display::SSD1306_screen_flash()
 
 }
 
-void Display::screenTest()
-{
-    uint8_t buf[SSD1306_BUF_LEN];
-    memset(buf, 0, SSD1306_BUF_LEN);
-    struct render_area frame_area = {
-        start_col : 0,
-        end_col : SSD1306_WIDTH - 1,
-        start_page : 0,
-        end_page : SSD1306_NUM_PAGES - 1
-    };
-
-    calc_render_area_buflen(&frame_area);
-    char *text[] = {
-        "A long time ago",
-        "  on an OLED ",
-        "   display",
-        " far far away",
-        "Lived a small",
-        "red raspberry",
-        "by the name of",
-        "    PICO"};
-
-    int y = 0;
-    for (uint i = 0; i < count_of(text); i++)
-    {
-        WriteString(buf, 5, y, text[i]);
-        y += 8;
-    }
-    render(buf, &frame_area);
-}
-
 void Display::renderDisplay()
 {
     render(m_screen_buf, &m_frame_area);
@@ -109,4 +78,27 @@ void Display::invertDisplayColor()
         SSD1306_send_cmd(SSD1306_SET_INV_DISP);
     }
     m_is_display_inverted=!m_is_display_inverted;
+}
+
+void Display::drawBatteryIcon(unsigned int level)
+{
+    //TODO optimize it
+    switch (level)
+    {
+    case 0:
+        DrawImageAt(m_screen_buf, SSD1306_WIDTH - BATTERY_ICON_IMG_WIDTH, 0, battery_icon_0, BATTERY_ICON_IMG_WIDTH, BATTERY_ICON_IMG_HEIGHT);
+        break;
+    case 1:
+        DrawImageAt(m_screen_buf, SSD1306_WIDTH - BATTERY_ICON_IMG_WIDTH, 0, battery_icon_1, BATTERY_ICON_IMG_WIDTH, BATTERY_ICON_IMG_HEIGHT);
+        break;
+    case 2:
+        DrawImageAt(m_screen_buf, SSD1306_WIDTH - BATTERY_ICON_IMG_WIDTH, 0, battery_icon_2, BATTERY_ICON_IMG_WIDTH, BATTERY_ICON_IMG_HEIGHT);
+        break;
+    case 3:
+        DrawImageAt(m_screen_buf, SSD1306_WIDTH - BATTERY_ICON_IMG_WIDTH, 0, battery_icon_3, BATTERY_ICON_IMG_WIDTH, BATTERY_ICON_IMG_HEIGHT);
+        break;
+    default:
+        DrawImageAt(m_screen_buf, SSD1306_WIDTH - BATTERY_ICON_IMG_WIDTH, 0, battery_icon_0, BATTERY_ICON_IMG_WIDTH, BATTERY_ICON_IMG_HEIGHT);
+        break;
+    }
 }

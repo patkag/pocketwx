@@ -13,6 +13,7 @@
 #include "../images/pocket_wx_welcome_img.h"
 #include "../display.h"
 #include "../logger.h"
+#include "../hardware_utils.h"
 #include "menu_items.h"
 
 #define GPIO_BUTTON_UP 9

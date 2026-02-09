@@ -9,6 +9,7 @@
 #include <string>
 #include "ssd1306_i2c.h"
 #include "logger.h"
+#include "images/icons.h"
 
 void init_display();
 
@@ -25,7 +26,8 @@ public:
     void invertDisplayColor();
 
     void static SSD1306_screen_flash();
-    void static screenTest();
+
+    void drawBatteryIcon(unsigned int level);
 
 private:
 

@@ -8,8 +8,8 @@
 #include <cmath>
 #include "pico/stdlib.h"
 #include "hardware/uart.h"
-#include "bmep280.h"
 
+#include "bmep280.h"
 #include "ssd1306_i2c.h"
 #include "display.h"
 #include "menu/menu.h"
@@ -93,8 +93,10 @@ void init_all()
     stdio_init_all();
     pico_led_init();
     //display init
-    hardware_utils::i2c_init();
+    hardware_utils::init_i2c();
+    hardware_utils::init_adc();
     init_display();
+    
 }
 
 
@@ -103,6 +105,7 @@ int main()
 {
     init_all();
     printf("Hello, init!\n");
+    Logger::getInstance()->setLogLevel(Logger::LL_DEBUG);
 
     main_menu();
     int i=0;
