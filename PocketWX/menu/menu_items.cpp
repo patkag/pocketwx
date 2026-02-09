@@ -9,7 +9,7 @@
 void MenuItemDisplayLogo::execute(Display &display, WxSensorModule& wx_sensor)
 {
     display.imgToBuf(pocket_wx_welcome_img);
-    sleep_ms(600);
+    sleep_ms(1800);
     display.invertDisplayColor();
 }
 
@@ -41,7 +41,7 @@ void MenuItemAltitude::execute(Display &display, WxSensorModule& wx_sensor)
 void MenuItemAllMeasurements::execute(Display &display, WxSensorModule& wx_sensor)
 {
     wx_sensor.updateData();
-    display.putTextAt(5, 0, "all measurement");
+    display.putTextAt(5, 0, "all");
     display.putTextAt(5,  8, "  T  "+ std::to_string(wx_sensor.getTemp()));
     display.putTextAt(5, 16, "  P " + std::to_string(wx_sensor.getPress()));
     display.putTextAt(5, 24, "alt " + std::to_string(wx_sensor.getAlt()));

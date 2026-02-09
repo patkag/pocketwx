@@ -2,6 +2,12 @@
  * Copyright (c) 2021 Raspberry Pi (Trading) Ltd.
  *
  * SPDX-License-Identifier: BSD-3-Clause
+ *
+ *------------------------------------------------------/
+ * Copyright (c) 2026, patkag
+ * Released under the GNU General Public License version 3
+ * refer to https://opensource.org/license/gpl-3-0
+ *------------------------------------------------------/
  */
 
 #ifndef SSD1306_I2C_H
@@ -119,4 +125,6 @@ void DrawLine(uint8_t *buf, int x0, int y0, int x1, int y1, bool on);
 void WriteChar(uint8_t *buf, int16_t x, int16_t y, uint8_t ch);
 
 void WriteString(uint8_t *buf, int16_t x, int16_t y, const char *str);
+
+void DrawImageAt(uint8_t *buf, int16_t x, int16_t y, uint8_t *img, int16_t img_width, int16_t img_height);
 #endif

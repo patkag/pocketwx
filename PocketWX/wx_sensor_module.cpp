@@ -9,7 +9,7 @@
 
 int WxSensorModule::initWxSensorModule()
 {
-    int ret = hardware_utils::i2c_init();
+    int ret = hardware_utils::init_i2c();
     
     if(ret == 0)
     {

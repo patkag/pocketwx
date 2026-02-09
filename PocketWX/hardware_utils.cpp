@@ -6,7 +6,7 @@
 
 #include "hardware_utils.h"
 
-int hardware_utils::i2c_init()
+int hardware_utils::init_i2c()
 {
     if(is_i2c_init_done==true)
     {
@@ -30,4 +30,34 @@ int hardware_utils::i2c_init()
     #endif
     }
     return 0;
+}
+
+void hardware_utils::init_adc()
+{
+    adc_init();
+    adc_gpio_init(GPIO_ADC_PIN);
+    adc_select_input(ADC_INPUT_0);
+}
+
+RingBuffer::RingBuffer()
+{
+    m_sum=0;
+    m_index=0;
+    for(float i : m_buffer)
+    {
+        i=0;
+    }
+}
+
+void RingBuffer::pushBack(float value)
+{
+    m_sum -= m_buffer[m_index];
+    m_sum += value;
+    m_buffer[m_index] = value;
+    m_index=(m_index+1)%RING_BUFFER_SIZE;
+}
+
+float RingBuffer::getAvarage()
+{
+    return m_sum/RING_BUFFER_SIZE;
 }
