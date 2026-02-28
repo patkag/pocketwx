@@ -32,7 +32,7 @@ void Logger::sendLogMsg(LogLevel logLvl, const std::string msg)
     Logger* inst = getInstance();
     if (logLvl <= inst->getLogLevel())
     {
-        printf("%-8s: %s\n", m_labels[logLvl].c_str(), msg.c_str());
+        printf("%-8s %16lld: %s\n", m_labels[logLvl].c_str(), time_us_64(), msg.c_str());
     }
 }
 
