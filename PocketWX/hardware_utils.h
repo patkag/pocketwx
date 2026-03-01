@@ -17,6 +17,11 @@
 #define ADC_INPUT_0 0
 #define RING_BUFFER_SIZE 10
 
+#define GPIO_BUTTON_UP 9
+#define GPIO_BUTTON_DOWN 8
+#define GPIO_BUTTON_XX 7
+#define GPIO_BUTTON_X 6
+
 namespace hardware_utils
 {
     static bool is_i2c_init_done;

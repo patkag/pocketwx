@@ -6,7 +6,7 @@
 
 #include "menu.h"
 
-void Menu::addMenuItem(unique_ptr<MenuItem> item)
+void Menu::addMenuItem(std::unique_ptr<MenuItem> item)
 {
     m_menu_items.push_back(move(item));
 }
@@ -55,7 +55,7 @@ void Menu::ButtonPressUp()
     {
         m_current_selection++;
     }
-    Logger::sendLogMsg(Logger::LL_INFO, "current menu selection: " + to_string(m_current_selection));
+    Logger::sendLogMsg(Logger::LL_INFO, "current menu selection: " + std::to_string(m_current_selection));
 }
 
 void Menu::ButtonPressDown()
@@ -69,7 +69,7 @@ void Menu::ButtonPressDown()
     {
         m_current_selection--;
     }
-    Logger::sendLogMsg(Logger::LL_INFO, "current menu selection: " + to_string(m_current_selection));
+    Logger::sendLogMsg(Logger::LL_INFO, "current menu selection: " + std::to_string(m_current_selection));
 }
 unsigned int Menu::getCurrentSelection()
 {

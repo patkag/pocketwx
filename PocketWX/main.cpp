@@ -63,17 +63,17 @@ void buttonCallback_two(uint gpios, uint32_t eventss)
         }
     }
 }
-// ========================= MAIN =========================
+
 int main_menu() {
     Display display;
     menu=new Menu(display);
     display.showMessage("Main Menu");
 
-    menu->addMenuItem(make_unique<MenuItemDisplayLogo>());
-    menu->addMenuItem(make_unique<MenuItemTemperature>());
-    menu->addMenuItem(make_unique<MenuItemPressure>());
-    menu->addMenuItem(make_unique<MenuItemAltitude>());
-    menu->addMenuItem(make_unique<MenuItemAllMeasurements>());
+    menu->addMenuItem(std::make_unique<MenuItemDisplayLogo>());
+    menu->addMenuItem(std::make_unique<MenuItemTemperature>());
+    menu->addMenuItem(std::make_unique<MenuItemPressure>());
+    menu->addMenuItem(std::make_unique<MenuItemAltitude>());
+    menu->addMenuItem(std::make_unique<MenuItemAllMeasurements>());
 
     
     gpio_init(GPIO_BUTTON_DOWN);
