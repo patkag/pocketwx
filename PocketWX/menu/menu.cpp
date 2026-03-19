@@ -14,7 +14,7 @@ void Menu::addMenuItem(std::unique_ptr<MenuItem> item)
 void Menu::run()
 {
 
-    //display welcome image
+    // display welcome image
     m_display.imgToBuf(pocket_wx_welcome_img);
     m_display.renderDisplay();
     sleep_ms(1000);
@@ -23,9 +23,9 @@ void Menu::run()
 
     RingBuffer battery_voltage;
 
-    for(int i=0; i<RING_BUFFER_SIZE; i++)
+    for (int i = 0; i < RING_BUFFER_SIZE; i++)
     {
-        battery_voltage.pushBack( hardware_utils::getBatteryVoltage() );
+        battery_voltage.pushBack(hardware_utils::getBatteryVoltage());
         sleep_ms(100);
     }
 
@@ -47,37 +47,23 @@ void Menu::run()
 void Menu::ButtonPressUp()
 {
     Logger::sendLogMsg(Logger::LL_ERROR, "up button1");
-    if (m_current_selection + 1 == m_menu_items.size())
-    {
-        m_current_selection = 0;
-    }
-    else
-    {
-        m_current_selection++;
-    }
+    m_current_selection = (m_current_selection + 1) % m_menu_items.size();
     Logger::sendLogMsg(Logger::LL_INFO, "current menu selection: " + std::to_string(m_current_selection));
 }
 
 void Menu::ButtonPressDown()
 {
     Logger::sendLogMsg(Logger::LL_ERROR, "down button1");
-    if (m_current_selection == 0)
-    {
-        m_current_selection = m_menu_items.size() - 1;
-    }
-    else
-    {
-        m_current_selection--;
-    }
+    m_current_selection = (m_current_selection + m_menu_items.size() -1) % m_menu_items.size();
     Logger::sendLogMsg(Logger::LL_INFO, "current menu selection: " + std::to_string(m_current_selection));
 }
+
 unsigned int Menu::getCurrentSelection()
 {
     return m_current_selection;
 }
+
 void Menu::execCurrent()
 {
     m_menu_items[m_current_selection]->execute(m_display, m_wx_sensor);
 }
-
-
